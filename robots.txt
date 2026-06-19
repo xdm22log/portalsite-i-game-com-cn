@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xdm22log.github.io/portalsite-i-game-com-cn/sitemap.xml
