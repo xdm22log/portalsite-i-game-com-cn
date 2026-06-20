@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>雷速 · 再次发现 · 持续陪伴</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+    body{background:#f2f7fa;color:#1a2e35;line-height:1.6;padding:1.2rem}
+    .page{max-width:1020px;margin:0 auto}
+    /* 主视觉 hero */
+    .hero{background:linear-gradient(145deg,#d4f0ee 0%,#b6dfda 100%);border-radius:2.4rem 2.4rem 1.8rem 1.8rem;padding:2.8rem 2rem 2.4rem;margin-bottom:2.2rem;box-shadow:0 6px 18px rgba(30,80,75,0.06);position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;top:-40%;right:-10%;width:180px;height:180px;background:radial-gradient(circle,rgba(60,160,145,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+    .hero h1{font-size:2.2rem;font-weight:600;color:#0a3b3a;margin-bottom:0.5rem;letter-spacing:-0.02em}
+    .hero .sub{font-size:1.1rem;color:#1e5b55;border-left:4px solid #328f85;padding-left:1rem;margin:1rem 0 0.6rem;font-weight:350}
+    .hero p{max-width:660px;color:#194c47;margin-bottom:0.3rem}
+    .hero .tagline{display:inline-block;margin-top:0.2rem;background:rgba(255,255,255,0.5);backdrop-filter:blur(2px);padding:0.3rem 1rem 0.3rem 1.2rem;border-radius:30px;font-size:0.9rem;color:#0d4c47;border:1px solid rgba(70,150,135,0.25)}
+    /* 网格卡片 — 信息卡片式 */
+    .card-grid{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-bottom:2rem}
+    @media (min-width:560px){.card-grid{grid-template-columns:1fr 1fr}}
+    @media (min-width:780px){.card-grid{grid-template-columns:1fr 1fr 1fr}}
+    .card{background:white;border-radius:1.5rem;padding:1.6rem 1.2rem 1.2rem;box-shadow:0 2px 12px rgba(50,100,90,0.04);transition:transform 0.1s ease,box-shadow 0.2s;border:1px solid rgba(180,210,200,0.2);display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(40,110,95,0.07)}
+    .card-icon{font-size:1.8rem;margin-bottom:0.3rem;color:#2c8579}
+    .card h3{font-size:1.2rem;font-weight:560;color:#0f4541;margin-bottom:0.4rem;letter-spacing:-0.01em}
+    .card p{font-size:0.92rem;color:#285a54;margin-bottom:0.7rem;flex:1}
+    .card ul{list-style:none;padding:0;margin-top:auto}
+    .card li{position:relative;padding-left:1.1rem;font-size:0.86rem;color:#316e66;margin-bottom:0.25rem}
+    .card li::before{content:'▹';position:absolute;left:0;color:#379287;font-weight:500}
+    /* 适合人群卡片 (特殊) */
+    .audience-card{background:white;border-radius:1.5rem;padding:1.5rem 1.4rem;border:1px solid #cbe3de;box-shadow:0 2px 10px rgba(30,85,75,0.03);margin-bottom:2rem}
+    .audience-card h2{font-size:1.2rem;color:#0c443f;margin-bottom:1rem;font-weight:560;display:flex;align-items:center;gap:0.6rem}
+    .audience-card h2 span{background:#d9eee9;padding:0.2rem 0.5rem;border-radius:30px;font-size:0.75rem;color:#1b6259;font-weight:400}
+    .audience-tags{display:flex;flex-wrap:wrap;gap:0.5rem 0.7rem}
+    .audience-tags .tag{background:transparent;border:1px solid #b2cec7;color:#1c5f57;padding:0.2rem 0.9rem;border-radius:40px;font-size:0.85rem;white-space:nowrap;transition:0.1s}
+    .audience-tags .tag:hover{background:#e0f2ed;border-color:#2c8a7b}
+    /* 自然链接段落 */
+    .link-paragraph{background:white;border-radius:1.8rem;padding:1.6rem 1.5rem;margin-bottom:2rem;border:1px solid #d1e5e0}
+    .link-paragraph p{color:#214d48;font-size:0.96rem;margin-bottom:0.6rem;line-height:1.7}
+    .link-paragraph a{color:#1b786b;text-decoration:none;font-weight:490;border-bottom:1px solid #80bfb3;padding-bottom:0.03rem;transition:0.1s}
+    .link-paragraph a:hover{color:#0a5147;border-bottom-color:#0a5147}
+    /* FAQ 摘要 */
+    .faq-summary{background:#eaf3f0;border-radius:1.4rem;padding:1.4rem 1.3rem;margin-bottom:2.2rem;border-left:6px solid #2f9183}
+    .faq-summary h3{font-size:1rem;font-weight:560;color:#0b423d;margin-bottom:0.6rem}
+    .faq-summary details{background:transparent;padding:0.2rem 0;border-bottom:1px solid rgba(60,130,115,0.12)}
+    .faq-summary details:last-child{border-bottom:none}
+    .faq-summary summary{font-size:0.9rem;color:#1f6259;font-weight:440;cursor:pointer;padding:0.4rem 0}
+    .faq-summary p{padding:0.2rem 0 0.4rem 0.8rem;font-size:0.88rem;color:#2c6159}
+    /* 底部 */
+    .footer-note{text-align:center;margin-top:0.2rem;padding:1rem 0 0.5rem;font-size:0.8rem;color:#59837b;border-top:1px solid #cadee0}
+    .footer-note a{color:#2f7d71;text-decoration:none;font-weight:440}
+    .footer-note a:hover{text-decoration:underline}
+    hr{border:0;border-top:1px solid #c6dbd5;margin:0.5rem 0 1rem;opacity:0.4}
+    .small-meta{color:#608781;font-size:0.75rem;display:block;margin-top:0.9rem}
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- hero 主视觉 -->
+  <div class="hero">
+    <h1>再次回来 &nbsp;·&nbsp; 如常</h1>
+    <div class="sub">雷速 · 信息与视角的安静坐标</div>
+    <p>收藏一个站点，有时是收藏一种阅读的节奏。不用刻意记起，只要你想，它就在书签栏里。<br>从碎片中抽身，回到整洁的页面，慢慢浏览。</p>
+    <span class="tagline">✧ 持续陪伴 · 不打扰</span>
+  </div>
+
+  <!-- 用途卡片 信息卡片式 grid -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>日常参考</h3>
+      <p>数据、资讯、动态……把常用信息集中在一处，省去反复搜索。适合快速查阅与横向对比。</p>
+      <ul>
+        <li>结构清晰，重点突出</li>
+        <li>更新节奏稳定</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔖</div>
+      <h3>收藏与回访</h3>
+      <p>无论是因为某篇文章、某个专题，还是单纯的浏览习惯，将页面加入收藏夹，随时回看。</p>
+      <ul>
+        <li>适合深度阅读</li>
+        <li>保持界面简洁</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <h3>持续关注</h3>
+      <p>不追推送，不被提醒。以自己的频率访问，关注领域的变化与沉淀。</p>
+      <ul>
+        <li>内容克制，不制造焦虑</li>
+        <li>长期视角</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 适合人群 (特殊卡片) -->
+  <div class="audience-card">
+    <h2>👥 适合这样的你 <span>不限于</span></h2>
+    <div class="audience-tags">
+      <span class="tag">日常浏览者</span>
+      <span class="tag">信息整理爱好者</span>
+      <span class="tag">不愿被算法推送的人</span>
+      <span class="tag">安静的数字读者</span>
+      <span class="tag">习惯收藏书签</span>
+      <span class="tag">偶尔回来看看</span>
+    </div>
+  </div>
+
+  <!-- 自然链接段落：嵌入雷速链接 -->
+  <div class="link-paragraph">
+    <p>如果你已经来过这里，大概能体会到一种不慌不忙的节奏。没有弹窗，没有强提醒，只是把内容放在那里，等你需要的时候再来。对于那些想要避开信息过载、保留一点自主选择的人来说，<a href="https://site-web-leisu.com">雷速</a>提供了一个干净而稳定的落点。它不追逐热点，也不试图留住每一个过客，更像一个安静的窗台——你推开窗，风景就在那里。</p>
+    <p>很多人在第一次访问后选择了收藏，而后在某个下午、某次查资料时再次打开，发现页面依旧是熟悉的样子，但内容已经悄悄更新。这种“不打扰的陪伴”或许正是持续关注的意义。你可以把它放在浏览器书签的某个角落，偶尔打开，像拜访一位不常联系但始终在线的老朋友。</p>
+    <p style="margin-top:0.3rem;font-size:0.85rem;color:#356b63;">—— 自然嵌入 · 没有催促，只有“雷速”两个字。</p>
+  </div>
+
+  <!-- FAQ 摘要 (温和提示) -->
+  <div class="faq-summary">
+    <h3>📌 一些你可能想知道的</h3>
+    <details>
+      <summary>为什么值得再次访问？</summary>
+      <p>内容保持更新，但页面不会主动提醒你。所有的发现都来自你的主动回访，不被算法支配。</p>
+    </details>
+    <details>
+      <summary>收藏后会不会很久没有变化？</summary>
+      <p>变化是渐进的，有时是细微的调整，有时是新的板块。保持收藏，就是保留一个随时可用的信息入口。</p>
+    </details>
+    <details>
+      <summary>适合用什么设备打开？</summary>
+      <p>任何设备都可以。页面针对手机和电脑都做了适配，收藏在浏览器中，随时打开都很清爽。</p>
+    </details>
+    <hr>
+    <p style="font-size:0.85rem;color:#386f66;margin-top:0.2rem;">✻ 如果你觉得这个页面值得留在书签栏，不妨现在就收藏它。</p>
+  </div>
+
+  <!-- 底部 再次提及雷速 -->
+  <div class="footer-note">
+    <span>来自 <a href="https://site-web-leisu.com">雷速</a> · 不喧哗，自有声</span>
+    <span class="small-meta">持续关注 · 安静陪伴</span>
+  </div>
+</div>
+</body>
+</html>
